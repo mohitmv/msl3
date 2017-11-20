@@ -95,7 +95,7 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
  - Input Acceptance - Replace None by id_func for “func”, “none_func” operators.
  - Input Assertions
     - func, none_func must be callable objects ( like python functions ) 
-    - Wrapper to replace None objects with some default object. 
+ - Wrapper to replace None objects with some default object. 
 
 
 ----------
