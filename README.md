@@ -61,12 +61,13 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
 **run_func( func, `*`args )**
  - Input Assertion - func must be valid python func.
  - operates func on args considering first few arguments as per need of func. Will ignore extra arguments, will add "None" if there are less arguments. 
- - Warning: Don’t use it for func having *, ** or default arguments.
+ - Warning: Don’t use it for func having `*, **` or default arguments.
+
 
 **left_fold(func, array, id_element)**
  - Input Assertion - 
-    - 1. Func must be valid python func.
-    - 2. array must be key-value pairing object.
+    - Func must be valid python func.
+    - array must be key-value pairing object.
  - operates left_fold on array.
 
 **mapped( func=None, array, filtering_func=None, key_func=None )**
