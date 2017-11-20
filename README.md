@@ -31,9 +31,9 @@ Definitions
     - A string ( Sometime Integer ), used to access sub-objects of a 
 
 
-Func 
-A function having Inputs, instructions and output
-Alias - Operator
+ - Func 
+    - A function having Inputs, instructions and output
+    - Alias - Operator
 
 Method
 A func offered by some object as key is called method.
