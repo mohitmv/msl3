@@ -13,6 +13,71 @@ Best and suggested way to use msl:
 
 
 
+Definitions
+Object 
+::= Atomic_Object  |  List of Objects  |  Dict_Object  |  Func  |  Class_Object
+
+Atomic_Object
+Objects which aren’t dependent on other objects. They have their independent life. Their state data is copied when assigned to new variable.
+Example: Int, String, Bool, “None”
+
+
+Dict_Object
+An object storing List of (key, Object) with unique keys, offering access to sub-objects by corresponding key. 
+Key
+A string ( Sometime Integer ), used to access sub-objects of a 
+
+
+Func 
+A function having Inputs, instructions and output
+Alias - Operator
+
+Method
+A func offered by some object as key is called method.
+Example: append method offered by list objects.
+
+
+Class_Object
+A black box offering sub-objects as keys, accessed by “.”
+All Objects are inherited from class_object originally.
+
+
+Arguments
+Alias for func inputs
+
+
+key-value-pairing object
+List of object | Dict of object | Pseudo Dict
+
+
+Pseudo xxxx
+An Class_Object which offer xxxx type interface but not a list actually. 
+Example Pseudo List, Pseudo Dict etc
+ 
+Pseudo Dict
+An object storing (key, value) pairs. Maintaining unique keys, allowing to access values on a key.
+Having .keys( ) method to return list of all keys.
+Having .pop( ) method to remove a key.
+Having .has_key( ) method to check if a key exists.
+
+
+Pure xxxx
+Sometime we call “pure xxxx” to “non pseudo xxxx” objects. Example pure list.
+
+
+
+
+Knowledges
+-------------
+ - left_fold (func, array, identity_element) = o6(o3(o1(identity_element )))
+    - Assuming array was [1, 3, 6] 
+    - Where unary operator o_i = func(... , value, key); corresponding to i’th index in key-value-pairing object array.
+
+
+
+
+
+
 Methods for `msl-1.0.0`
 -------------
 
