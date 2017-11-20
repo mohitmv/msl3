@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: msl
+Version: 1.0.0
+Summary: Simple extension of python inbuilt functions
+Home-page: https://github.com/mohitmv/msl3
+Author: Mohit Saini
+Author-email: mohitsaini1196@gmail.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Description: Simple extension of python inbuilt functions
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
