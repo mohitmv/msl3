@@ -58,29 +58,29 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
  - Input assertions - obj must be key-value-pairing objects, keys must be list of keys.
  - Return True iff all keys are defined.
 
-run_func( func, *args )
-: Input Assertion - func must be valid python func.
-operates func on args considering first few arguments as per need of func. Will ignore extra arguments, will add “None” if there are less arguments. 
-Warning: Don’t use it for func having *, ** or default arguments.
+**run_func( func, *args )**
+ - Input Assertion - func must be valid python func.
+ - operates func on args considering first few arguments as per need of func. Will ignore extra arguments, will add “None” if there are less arguments. 
+ - Warning: Don’t use it for func having *, ** or default arguments.
 
-left_fold(func, array, id_element)
-: Input Assertion - 
-&nbsp;&nbsp; 1. Func must be valid python func.
-&nbsp;&nbsp; 2. array must be key-value pairing object.
-: operates left_fold on array.
+**left_fold(func, array, id_element)**
+ - Input Assertion - 
+    - 1. Func must be valid python func.
+    - 2. array must be key-value pairing object.
+ - operates left_fold on array.
 
-mapped( func=None, array, filtering_func=None, key_func=None )
-: Input Acceptance - None replacer
-1. filtering_func = const_func( True )
-2. key_func = id_func
-3. func = id_func
-: Input assertion
-1. Func, filtering_func, key_func must be valid python func.
-2. Array must be valid key-value-pairing object.
-: Return key-value-pairing object of array’s type but mapped (new_key, new_value) pairs.
-1. new_key = key_func(old_key, old_value)
-2. new_value = func(old_value, old_key)
-3. keeps a pair iff filtering_func(old_value, old_key) is True 
+**mapped( func=None, array, filtering_func=None, key_func=None )**
+ - Input Acceptance - None replacer
+    - filtering_func = const_func( True )
+    - key_func = id_func
+    - func = id_func
+ - Input assertion
+    - Func, filtering_func, key_func must be valid python func.
+    - Array must be valid key-value-pairing object.
+ - Return key-value-pairing object of array’s type but mapped (new_key, new_value) pairs.
+    - new_key = key_func(old_key, old_value)
+    - new_value = func(old_value, old_key)
+    - keeps a pair iff filtering_func(old_value, old_key) is True 
 
 
 get_value(obj, key_sequence, default_value = None)
