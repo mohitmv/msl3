@@ -66,8 +66,8 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
 
 **left_fold(func, array, id_element)**
  - Input Assertion - 
-    - Func must be valid python func.
-    - array must be key-value pairing object.
+    - func must be valid python func.
+    - Array must be key-value pairing object.
  - operates left_fold on array.
 
 **mapped( func=None, array, filtering_func=None, key_func=None )**
@@ -84,10 +84,10 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
     - keeps a pair iff filtering_func(old_value, old_key) is True 
 
 
-get_value(obj, key_sequence, default_value = None)
-: Input assertion - 
-1. Key_sequence must be list of keys.
-2. Let key_sequence = [ k0, k1, k2 ], each of obj, obj[k0], obj[k0][k1] must be key-value-pairing object or undefined.
+**get_value(obj, key_sequence, default_value = None)**
+ - Input assertion - 
+    - Key_sequence must be list of keys.
+    - Let key_sequence = [ k0, k1, k2 ], each of obj, obj[k0], obj[k0][k1] must be key-value-pairing object or undefined.
 : Let key_sequence = [ k0, k1, k2 ], returns obj[k0][k1][k2] if defined else return default_value.
 
 
