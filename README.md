@@ -60,7 +60,7 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
 
 **run_func( func, `*`args )**
  - Input Assertion - func must be valid python func.
- - operates func on args considering first few arguments as per need of func. Will ignore extra arguments, will add “None” if there are less arguments. 
+ - operates func on args considering first few arguments as per need of func. Will ignore extra arguments, will add "None" if there are less arguments. 
  - Warning: Don’t use it for func having *, ** or default arguments.
 
 **left_fold(func, array, id_element)**
