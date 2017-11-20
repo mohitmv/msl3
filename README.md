@@ -58,7 +58,7 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
  - Input assertions - obj must be key-value-pairing objects, keys must be list of keys.
  - Return True iff all keys are defined.
 
-**<code>run_func( func, *args )</code>**
+**run_func( func, `*`args )**
  - Input Assertion - func must be valid python func.
  - operates func on args considering first few arguments as per need of func. Will ignore extra arguments, will add “None” if there are less arguments. 
  - Warning: Don’t use it for func having *, ** or default arguments.
