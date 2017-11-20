@@ -88,14 +88,14 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
  - Input assertion - 
     - Key_sequence must be list of keys.
     - Let key_sequence = [ k0, k1, k2 ], each of obj, obj[k0], obj[k0][k1] must be key-value-pairing object or undefined.
-: Let key_sequence = [ k0, k1, k2 ], returns obj[k0][k1][k2] if defined else return default_value.
+ - Let key_sequence = [ k0, k1, k2 ], returns obj[k0][k1][k2] if defined else return default_value.
 
 
-none_default( obj, default_value, func=None, none=None, none_func=None )
-: Input Acceptance - Replace None by id_func for “func”, “none_func” operators.
-: Input Assertions
-1. func, none_func must be callable objects ( like python functions ) 
-: Wrapper to replace None objects with some default object. 
+**none_default( obj, default_value, func=None, none=None, none_func=None )**
+ - Input Acceptance - Replace None by id_func for “func”, “none_func” operators.
+ - Input Assertions
+    - func, none_func must be callable objects ( like python functions ) 
+    - Wrapper to replace None objects with some default object. 
 
 
 ----------
