@@ -38,26 +38,25 @@ none_default( ... ) | Wrapper to replace None objects with some default object.
 
 ### Detailed Documentation
 
+**get_keys( obj )**
+ - Input Assertion - obj must be key-value-pairing object.
+ - returns [0,1,2,3] if obj was list of size 4.
 
-get_keys( obj ) 
-: Input Assertion - obj must be key-value-pairing object.
-: returns [0,1,2,3] if obj was list of size 4.
+**get_keys_values( obj )**
+ - Input Assertion - obj must be key-value-pairing object.
+ - Return the List of (key, value) of key-value-pairing obj.
 
-get_keys_values( obj )
-: Input Assertion - obj must be key-value-pairing object.
-: Return the List of (key, value) of key-value-pairing obj.
+**get_values( obj )**
+ - Input Assertion - obj must be key-value-pairing object.
+ - Return the List of value of key-value-pairing obj.
 
-get_values( obj )
-: Input Assertion - obj must be key-value-pairing object.
-: Return the List of value of key-value-pairing obj.
+**has_key(obj, key)**
+ - Input Assertion - obj must be key-value-pairing object
+ - Return True iff obj[key] is defined.
 
-has_key(obj, key)
-: Input Assertion - obj must be key-value-pairing object
-: Return True iff obj[key] is defined.
-
-has_keys(obj, keys)
-: Input assertions - obj must be key-value-pairing objects, keys must be list of keys.
-: Return True iff all keys are defined.
+**has_keys(obj, keys)**
+ - Input assertions - obj must be key-value-pairing objects, keys must be list of keys.
+ - Return True iff all keys are defined.
 
 run_func( func, *args )
 : Input Assertion - func must be valid python func.
@@ -96,4 +95,7 @@ none_default( obj, default_value, func=None, none=None, none_func=None )
 : Input Assertions
 1. func, none_func must be callable objects ( like python functions ) 
 : Wrapper to replace None objects with some default object. 
+
+
+----------
 
