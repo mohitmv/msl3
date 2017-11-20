@@ -11,6 +11,7 @@ Best and suggested way to use msl:
 
 **Warning:** `This document is incomplete and ill presented. email mohitsaini1196@gmail.com for more details.`
 
+-------------
 
 
 Definitions
@@ -68,6 +69,7 @@ Definitions
  - Sometime we call “pure xxxx” to “non pseudo xxxx” objects. Example pure list.
 
 
+-------------
 
 
 Knowledges
