@@ -9,7 +9,7 @@ Best and suggested way to use msl:
 ----------
 
 
-**Warning:** `This document is incomplete and ill presented. email mohitsaini1196@gmail.com for more details.`
+**Warning:** `This document is incomplete and ill presented. email mohitsaini1196@gmail.com for more details. We will be releasing msl-2.0.0 soon, which will be very stable and cool.`
 
 -------------
 
