@@ -73,6 +73,7 @@ class Queue_Runner:
 
 		self._queue_read_lock = threading.Lock();
 		self._cur_obj_index = None;
+		self._runner_thread = None;
 
 
 	def add(self, obj): # Can be called concurrently.
@@ -83,6 +84,10 @@ class Queue_Runner:
 		if(is_empty):
 			self._runner_thread = threading.Thread(target=self._runner, args=());
 			self._runner_thread.start();
+
+
+	def runner_thread(self):
+		return self._runner_thread;
 
 
 	def delete(self, obj_index): #Assert( queue_indexer must be defined )

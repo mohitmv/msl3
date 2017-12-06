@@ -2,10 +2,7 @@
 
 
 ############### A Subset of MSL starts here ##############################
-import collections, inspect
-
-
-import msl.utils as msl_utils
+import collections, inspect, os
 
 Ordered_Dict = collections.OrderedDict;
 id_func = lambda x: x;
@@ -283,7 +280,7 @@ class Object(dict):
 
 
 msl = dict(
-	__version__ = "1.0.0"
+	__version__ = "1.0.1"
 );
 
 
