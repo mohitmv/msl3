@@ -2,9 +2,11 @@
 from setuptools import setup
 
 
+import msl
+
 setup(
 	name='msl',
-	version="1.0.1",
+	version=msl.msl['__version__'],
 	url='https://github.com/mohitmv/msl3',
 	author='Mohit Saini',
 	author_email='mohitsaini1196@gmail.com',

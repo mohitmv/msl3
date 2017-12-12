@@ -2,7 +2,7 @@
 
 
 ############### A Subset of MSL starts here ##############################
-import collections, inspect, os
+import collections, inspect, traceback
 
 Ordered_Dict = collections.OrderedDict;
 id_func = lambda x: x;
@@ -146,7 +146,7 @@ def pop(obj, index):
 ########## OS method starts here ####################
 
 
-import csv
+import csv, os
 
 
 def read_file_pipe(file_pipe, reader=None):
@@ -173,11 +173,14 @@ def read_csv(file_name):
 def none_default(obj, default_value=None, func=None, none=None, none_func=None):
 	return (none_func(default_value) if none_func != None else default_value) if(obj == none) else (func(obj) if func != None else obj);
 
-def run_if_can(operator, exceptions=None, default_value=None, inp=()):
+def run_if_can(operator, exceptions=None, default_value=None, inp=(), on_error=None): #need = [traceback]
 	try:
 		return operator(*inp);
 	except tuple(none_default(exceptions, (Exception,))):
+		if(on_error != None):
+			on_error(traceback.format_exc());
 		return default_value;
+
 
 def indexify(data, key_list=[], is_unique = False, is_pop = True):
 	list_or_row = lambda x: x[0] if is_unique else x;
@@ -280,7 +283,7 @@ class Object(dict):
 
 
 msl = dict(
-	__version__ = "1.0.1"
+	__version__ = "1.0.2"
 );
 
 
