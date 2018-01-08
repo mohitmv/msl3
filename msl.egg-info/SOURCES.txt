@@ -7,3 +7,4 @@ msl.egg-info/dependency_links.txt
 msl.egg-info/top_level.txt
 msl/utils/__init__.py
 msl/utils/queue_runner.py
+msl/utils/sqlary.py

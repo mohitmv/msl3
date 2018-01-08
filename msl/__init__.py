@@ -52,7 +52,7 @@ def map_dict(func, obj, filtering_func=None, key_func=None):
 
 def values_list(obj):
 	if is_list(obj):
-		return map(lambda x: x[1], obj);
+		return list(map(lambda x: x[1], obj));
 	else:
 		return obj.values();
 
@@ -162,7 +162,7 @@ def read_file(file_name, reader=None):
 	return read_file_pipe(open(file_name, encoding="utf-8"), reader);
 
 def write_file(fn, data, mode='w'):
-	return write_file_pipe(open(fn, mode), data);
+	return write_file_pipe(open(fn, mode, encoding='utf-8'), data);
 
 def run_linux_command(command):
 	return read_file_pipe(os.popen(command));
@@ -283,7 +283,7 @@ class Object(dict):
 
 
 msl = dict(
-	__version__ = "1.0.2"
+	__version__ = "1.0.3"
 );
 
 
