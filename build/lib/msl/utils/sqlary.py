@@ -8,12 +8,12 @@ import psycopg2
 
 class Sqlary_v1:#need = [psycopg2]
 	def __init__(self, db_credentials, log=print):
+		self.log = log;
 		self.db_credentials = db_credentials;
 		self.init();
 
 
-	def init(self, log=print):
-		self.log = log;
+	def init(self):
 		self.conn = psycopg2.connect(**self.db_credentials);
 		self.cur = self.conn.cursor();
 
