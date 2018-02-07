@@ -5,7 +5,7 @@ from msl import *
 
 import argparse
 from msl.utils.queue_runner import Queue_Runner
-from msl.utils.sqlary import Sqlary_v1 as Sqlary
+# from msl.utils.sqlary import Sqlary_v1 as Sqlary
 
 
 
