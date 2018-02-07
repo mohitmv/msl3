@@ -72,6 +72,9 @@ class Sqlary_v1:#need = [psycopg2]
 
 
 
+Sqlary = Sqlary_v1;
+
+
 
 
 
