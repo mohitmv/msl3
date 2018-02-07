@@ -37,6 +37,10 @@ class Queue:
 	def __repr__(self):
 		return str(self.list());
 
+	def get(self, obj_index):
+		assert(self._queue_indexer != None);
+		return self._obj_map[obj_index];
+
 	def delete(self, obj_index):
 		assert(self._queue_indexer != None);
 		if(obj_index in self._obj_map):
@@ -64,11 +68,12 @@ default_queue_class -
 
 
 class Queue_Runner:
-	def __init__(self, operator, queue_indexer=None, default_queue_class=None, logger=print):
+	def __init__(self, operator, queue_indexer=None, abort_running_object=None, default_queue_class=None, logger=print):
 		self._queue = none_default(default_queue_class, Queue)(queue_indexer);
 
 		self._queue_indexer = queue_indexer;
 		self._operator = operator;
+		self._abort_running_object = abort_running_object;
 		self._logger = logger;
 
 		self._queue_read_lock = threading.Lock();
@@ -85,6 +90,9 @@ class Queue_Runner:
 			self._runner_thread = threading.Thread(target=self._runner, args=());
 			self._runner_thread.start();
 
+	def list(self):
+		return self._queue.list();
+
 
 	def runner_thread(self):
 		return self._runner_thread;
@@ -96,6 +104,8 @@ class Queue_Runner:
 		self._queue_read_lock.acquire();
 		if(obj_index != self._cur_obj_index):
 			output = self._queue.delete(obj_index);
+		elif self._abort_running_object != None:
+			output = self._abort_running_object(self._queue.get(obj_index));
 		self._queue_read_lock.release();
 		return output;
 
