@@ -170,6 +170,24 @@ def run_linux_command(command):
 def read_csv(file_name):
 	return read_file(file_name, lambda csv_file: list(list(row) for row in csv.reader(csv_file)));
 
+def write_csv(file_name, data):
+	fd = open(file_name, "w", encoding='utf-8');
+	csv_writer = csv.writer(fd);
+	list(csv_writer.writerow(i) for i in data);
+	fd.close();
+
+def csv_to_dict_list(csv_output):
+	if len(csv_output) > 0:
+		titles_keys = get_keys_values(csv_output[0]);
+		return list(
+			dict(
+				(
+					column_name, i[column_index]
+				) for column_index, column_name in titles_keys
+			) for i in csv_output[1:]
+		);
+
+
 def none_default(obj, default_value=None, func=None, none=None, none_func=None):
 	return (none_func(default_value) if none_func != None else default_value) if(obj == none) else (func(obj) if func != None else obj);
 
@@ -283,7 +301,7 @@ class Object(dict):
 
 
 msl = dict(
-	__version__ = "1.0.4"
+	__version__ = "1.0.5"
 );
 
 

@@ -17,6 +17,9 @@ class Sqlary_v1:#need = [psycopg2]
 		self.conn = psycopg2.connect(**self.db_credentials);
 		self.cur = self.conn.cursor();
 
+	def get_query_result_row(self, query, params=()):
+		return get_item(self.get_query_results(), 0);
+
 
 	def get_query_results(self, query, params=()):
 		try:
@@ -32,6 +35,21 @@ class Sqlary_v1:#need = [psycopg2]
 			raise e;
 
 
+	def get_query_results_seq(self, query, callback, chunk_size=1000, params=()):
+		offset = 0;
+		while True:
+			partial_results = self.get_query_results(query+" LIMIT {chunk_size} OFFSET {offset}".format(chunk_size=chunk_size, offset=offset), params);
+			if len(partial_results) == 0:
+				break;
+			callback(partial_results);
+			offset += chunk_size;
+
+
+
+
+
+
+
 	def exec_query(self, query, params=()):
 		try:
 			if(params == ()):
@@ -43,6 +61,13 @@ class Sqlary_v1:#need = [psycopg2]
 			self.log("Error in exec_query({0}, {1}) - \n".format(query, params), traceback.format_exc());
 			self.init();
 			raise e;
+
+
+	def insert_rows_seq(self, table_name, fields, rows, callback=None, chunk_size=1000):
+		for i in range(0, len(rows), chunk_size):
+			self.insert_rows(table_name, fields, rows[i:i+chunk_size]);
+			if callback != None:
+				callback(i+chunk_size);
 
 
 	def insert_rows(self, table_name, fields, rows):
