@@ -5,7 +5,7 @@
 import collections, inspect, traceback
 
 Ordered_Dict = collections.OrderedDict;
-id_func = lambda x: x;
+id_function = lambda x: x;
 null_func = lambda: None;
 true_func = lambda: True;
 false_func = lambda: False;
@@ -15,17 +15,15 @@ get_last = lambda *args: args[-1];
 is_list = lambda obj: type(obj) == list;
 
 
-
 def none_default(obj, default_value=None, func=None, none=None, none_func=None):
 	return (none_func(default_value) if none_func != None else default_value) if(obj == none) else (func(obj) if func != None else obj);
-
 
 def call_if(obj, is_func):
 	return none_default(obj, null_func)() if is_func else obj;
 
 
 def call_func(operator, *arguments):
-	required_args_len = len(inspect.getargspec(operator).args);
+	required_args_len = len(inspect.getfullargspec(operator).args);
 	arguments = list(arguments);
 	if(len(arguments) < required_args_len):
 		arguments += [None]*(required_args_len-len(arguments));
@@ -34,7 +32,6 @@ def call_func(operator, *arguments):
 def has_key(obj, key):
 	is_obj_list = is_list(obj);
 	return (is_obj_list and (-len(obj) <= key < len(obj))) or (not(is_obj_list) and (key in obj));
-
 
 def get_keys(obj):
 	return list(range(len(obj))) if is_list(obj) else list(obj.keys());
@@ -45,8 +42,8 @@ def get_keys_values(obj):
 
 def map_dict(func, obj, filtering_func=None, key_func=None):
 	filtering_func = none_default(filtering_func, true_func);
-	key_func = none_default(key_func, id_func);
-	func = none_default(func, id_func);
+	key_func = none_default(key_func, id_function);
+	func = none_default(func, id_function);
 	return obj.__class__((call_func(key_func, i[0], i[1]), call_func(func, i[1], i[0])) for i in get_keys_values(obj) if(call_func(filtering_func, i[1], i[0])));
 
 
@@ -265,7 +262,7 @@ class Time:
 
 	@staticmethod
 	def get_time_now(show_ms=False):
-		return if_else(show_ms, id_func, int)(time.mktime(datetime.datetime.now(none_default(Time.pytz, func=lambda x: x.timezone("Asia/Calcutta"))).timetuple()));
+		return if_else(show_ms, id_function, int)(time.mktime(datetime.datetime.now(none_default(Time.pytz, func=lambda x: x.timezone("Asia/Calcutta"))).timetuple()));
 
 
 	@staticmethod
