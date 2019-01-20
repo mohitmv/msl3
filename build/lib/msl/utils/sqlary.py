@@ -62,8 +62,8 @@ class Sqlary_v1:#need = [psycopg2]
 			callback(partial_results);
 			offset += chunk_size;
 
-	def get_query_result_row(self, query, params=()):
-		return get_item(self.get_query_results(query, params), 0);
+	def get_query_result_row(self, query, params=(), commit=False):
+		return get_item(self.get_query_results(query, params, commit), 0);
 
 	def insert_rows_seq(self, table_name, rows, chunk_size=1000, callback=None):
 		for i in range(0, len(rows), chunk_size):
@@ -98,8 +98,7 @@ class Sqlary_v1:#need = [psycopg2]
 			suffix = "RETURNING id" if return_inserted_id else ""
 		);
 		if return_inserted_id:
-			output = self.get_query_result_row(query, row)["id"];
-
+			return self.get_query_result_row(query, row, True)["id"];
 		else:
 			return self.exec_query(query, row);
 
