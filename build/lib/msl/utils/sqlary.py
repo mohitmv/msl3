@@ -72,6 +72,8 @@ class Sqlary_v1:#need = [psycopg2]
 				callback(i+chunk_size);
 
 	def insert_rows(self, table_name, rows):
+		if len(rows) == 0:
+			return;
 		fields = list(rows[0].keys());
 		rows = list(list(row[column] for column in fields) for row in rows);
 		self.exec_query("INSERT INTO {table_name} ({fields}) VALUES {values} ".format(
