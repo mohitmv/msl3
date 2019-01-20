@@ -25,11 +25,14 @@ class Sqlary_v1:#need = [psycopg2]
 		else:
 			return self.cur.execute(query, params);
 
-	def get_query_results(self, query, params=()):
+	def get_query_results(self, query, params=(), commit=False):
 		try:
 			self._exec_query_internal(query, params);
 			titles = [desc[0] for desc in self.cur.description];
-			return list(dict(zip(titles, list(row))) for row in self.cur.fetchall());
+			output = list(dict(zip(titles, list(row))) for row in self.cur.fetchall());
+			if(commit and self.auto_commit):
+				self.conn.commit();
+			return output;
 		except psycopg2.Error as e:
 			self.log("Error in get_query({0}, {1}) - \n".format(query, params), traceback.format_exc());
 			self.init();
@@ -95,7 +98,8 @@ class Sqlary_v1:#need = [psycopg2]
 			suffix = "RETURNING id" if return_inserted_id else ""
 		);
 		if return_inserted_id:
-			return self.get_query_result_row(query, row)["id"] ;
+			output = self.get_query_result_row(query, row)["id"];
+
 		else:
 			return self.exec_query(query, row);
 
